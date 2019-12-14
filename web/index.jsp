@@ -11,7 +11,7 @@
     if(request.getParameter("submit")!=null)
     {
         String name = request.getParameter("sname");
-        String course = request.getParameter("sname");
+        String course = request.getParameter("course");
         String fee = request.getParameter("fee");
         
         Connection con;
@@ -44,9 +44,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>JSP</title>
-  </head>
-  <body>
-      <div class="container">
+  </head>  <body>
+      <div class="container mt-4">
           <h1>Student Registration system</h1>
           <div class="row">
               <div class="col-lg-5">
@@ -74,7 +73,50 @@
               </div> 
 <!--              col-lg-5 end-->
               <div class="col-lg-7">
+                  <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Fee</th>
+                    <th ></th>
                   
+                  </tr>
+                </thead>
+                <tbody>
+                    <%
+                        Connection con;
+                        PreparedStatement pst;
+                        ResultSet rs;
+
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost/thura_jsp","root","");
+                        
+                        String query = "select * from records";
+                        Statement st = con.createStatement();
+                        
+                        rs = st.executeQuery(query);
+                        
+                        while(rs.next()){
+                            String id = rs.getString("id");
+                       
+                    %>
+                    
+                  <tr>
+                    <th scope="row"></th>
+                    <td><%=rs.getString("stname") %></td>
+                    <td><%=rs.getString("course") %></td>
+                    <td><%=rs.getString("fee") %> MMK</td>
+                    
+                    <td>
+                        <a href="update.jsp?id=<%=id%>" class="btn btn-outline-warning">Edit</a>
+                        <a href="delete.jsp?id=<%=id%>" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                  </tr>
+                    <%  } %>
+                </tbody>
+              </table>
               </div> 
 <!--              col-lg-7 end-->
               
