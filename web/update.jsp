@@ -31,6 +31,7 @@
         pst.setString(1, name);
         pst.setString(2, course);
         pst.setString(3, fee);
+        pst.setString(4, id);
         pst.executeUpdate();
     
 %>
@@ -57,7 +58,7 @@
           <h1>Student Update</h1>
           <div class="row">
               <div class="col-lg-5">
-                  <form method="POST" action="#">
+                  <form method="POST" action="">
                       <%
                         Connection con;
                         PreparedStatement pst;

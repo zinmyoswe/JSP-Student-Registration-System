@@ -49,7 +49,7 @@
           <h1>Student Registration system</h1>
           <div class="row">
               <div class="col-lg-5">
-                  <form method="POST" action="#">
+                  <form method="POST" action="">
                       <div class="form-group">
                     <label for="exampleInputEmail1">Student Name</label>
                     <input type="text" class="form-control" name="sname" id="exampleInputEmail1" >
