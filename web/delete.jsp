@@ -29,6 +29,7 @@
 <script>
     alert("Deleted Record");
 </script>
+<script>window.location='index.jsp'</script>
 
 
 
